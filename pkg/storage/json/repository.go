@@ -3,14 +3,14 @@ package json
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/djedjethai/ddd/storage"
+	"github.com/djedjethai/ddd/pkg/storage"
 	"log"
 	"path"
 	"runtime"
 	"time"
 
-	"github.com/djedjethai/ddd/adding"
-	"github.com/djedjethai/ddd/listing"
+	"github.com/djedjethai/ddd/pkg/adding"
+	"github.com/djedjethai/ddd/pkg/listing"
 	"github.com/nanobox.io/golang-scribble"
 )
 
@@ -64,4 +64,51 @@ func (s *Storage) AddBeer(b adding.Beer) error {
 	}
 
 	return nil
+}
+
+func (s *Storage) GetBeer(id string) (listing.beer, error) {
+	var b Beer
+	var beer listing.Beer
+
+	if err := s.db.Read(CollectionBeer, id, &b); err != nil {
+		return beer, listing.ErrNotFound
+	}
+
+	beer.ID = b.ID
+	beer.Name = b.Name
+	beer.Brewery = b.Brewery
+	beer.Abv = b.Abv
+	beer.ShortDesc = b.ShortDesc
+	beer.Created = b.Created
+
+	return beer, nil
+}
+
+func (s *storage) GetAllBeers() []listing.Beer {
+	list := []listing.Beer{}
+
+	records, err := s.db.ReadAll(CollectionBeer)
+	if err != nil {
+		return list
+	}
+
+	for _, r := range records {
+		var b Beer
+		var beer listing.Beer
+
+		if err := json.Unmarshal([]Byte(r), &b); err != nil {
+			return list
+		}
+
+		beer.ID = b.ID
+		beer.Name = b.Name
+		beer.Brewery = b.Brewery
+		beer.Abv = b.Abv
+		beer.ShortDesc = b.ShortDesc
+		beer.Created = b.Created
+
+		list = append(list, beer)
+	}
+
+	return list
 }
