@@ -1,6 +1,6 @@
 package main
 
-import "github.com/katzien/go-structure-examples/domain-hex/pkg/adding"
+import "github.com/djedjethai/goDdd/cmd/adding"
 
 var DefaultBeers = []adding.Beer{
 	{

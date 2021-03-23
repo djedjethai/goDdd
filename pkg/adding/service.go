@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"errors"
-	"github.com/djedjethai/ddd/pkg/listing"
+	"github.com/djedjethai/goDdd/pkg/listing"
 )
 
 var errDuplicate = errors.New("beer already exist")

@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/djedjethai/ddd/pkg/adding"
-	"github.com/djedjethai/ddd/pkg/storage/json"
+	"github.com/djedjethai/goDdd/cmd/adding"
+	"github.com/djedjethai/goDdd/cmd/storage/json"
 )
 
 func main() {

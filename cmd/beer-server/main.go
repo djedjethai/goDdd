@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"log"
-	"github.com/djedjethai/ddd/pkg/adding"
-	"github.com/djedjethai/ddd/pkg/http/rest"
-	"github.com/djedjethai/ddd/pkg/listing"
-	"github.com/djedjethai/ddd/pkg/storage/json"
-	"github.com/djedjethai/ddd/pkg/storage/memory"
+	"github.com/djedjethai/goDdd/cmd/adding"
+	"github.com/djedjethai/goDdd/cmd/http/rest"
+	"github.com/djedjethai/goDdd/cmd/listing"
+	"github.com/djedjethai/goDdd/cmd/storage/json"
+	"github.com/djedjethai/goDdd/cmd/storage/memory"
 )
 
 type Type int 

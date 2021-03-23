@@ -3,14 +3,14 @@ package json
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/djedjethai/ddd/pkg/storage"
+	"github.com/djedjethai/goDdd/pkg/storage"
 	"log"
 	"path"
 	"runtime"
 	"time"
 
-	"github.com/djedjethai/ddd/pkg/adding"
-	"github.com/djedjethai/ddd/pkg/listing"
+	"github.com/djedjethai/goDdd/pkg/adding"
+	"github.com/djedjethai/goDdd/pkg/listing"
 	"github.com/nanobox.io/golang-scribble"
 )
 
