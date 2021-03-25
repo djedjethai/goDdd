@@ -2,31 +2,30 @@ package main
 
 import (
 	"fmt"
+	"github.com/djedjethai/goDdd/pkg/adding"
+	"github.com/djedjethai/goDdd/pkg/http/rest"
+	"github.com/djedjethai/goDdd/pkg/listing"
+	"github.com/djedjethai/goDdd/pkg/storage/json"
+	"github.com/djedjethai/goDdd/pkg/storage/memory"
 	"log"
-	"github.com/djedjethai/goDdd/cmd/adding"
-	"github.com/djedjethai/goDdd/cmd/http/rest"
-	"github.com/djedjethai/goDdd/cmd/listing"
-	"github.com/djedjethai/goDdd/cmd/storage/json"
-	"github.com/djedjethai/goDdd/cmd/storage/memory"
 )
 
-type Type int 
+type Type int
 
 const (
-	JSON.Type = iota
+	JSON Type = iota
 
 	Memory
 )
-
 
 func main() {
 	// set up the storage
 	storageType := JSON
 
-	var adder adding.service
-	var lister listing.service
+	var adder adding.Service
+	var lister listing.Service
 
-	switch storageType{
+	switch storageType {
 	case Memory:
 		s := new(memory.Storage)
 
