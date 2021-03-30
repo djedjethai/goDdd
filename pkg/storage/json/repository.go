@@ -2,7 +2,7 @@ package json
 
 import (
 	"encoding/json"
-	"fmt"
+	// "fmt"
 	"github.com/djedjethai/goDdd/pkg/storage"
 	"log"
 	"path"
@@ -11,7 +11,7 @@ import (
 
 	"github.com/djedjethai/goDdd/pkg/adding"
 	"github.com/djedjethai/goDdd/pkg/listing"
-	"github.com/nanobox.io/golang-scribble"
+	"github.com/nanobox-io/golang-scribble"
 )
 
 const (
@@ -66,7 +66,7 @@ func (s *Storage) AddBeer(b adding.Beer) error {
 	return nil
 }
 
-func (s *Storage) GetBeer(id string) (listing.beer, error) {
+func (s *Storage) GetBeer(id string) (listing.Beer, error) {
 	var b Beer
 	var beer listing.Beer
 
@@ -84,7 +84,7 @@ func (s *Storage) GetBeer(id string) (listing.beer, error) {
 	return beer, nil
 }
 
-func (s *storage) GetAllBeers() []listing.Beer {
+func (s *Storage) GetAllBeers() []listing.Beer {
 	list := []listing.Beer{}
 
 	records, err := s.db.ReadAll(CollectionBeer)
@@ -96,7 +96,7 @@ func (s *storage) GetAllBeers() []listing.Beer {
 		var b Beer
 		var beer listing.Beer
 
-		if err := json.Unmarshal([]Byte(r), &b); err != nil {
+		if err := json.Unmarshal([]byte(r), &b); err != nil {
 			return list
 		}
 

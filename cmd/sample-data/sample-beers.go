@@ -1,7 +1,10 @@
 package main
 
-import "github.com/djedjethai/goDdd/cmd/adding"
+import "github.com/djedjethai/goDdd/pkg/adding"
 
+var Moncul = "dans le cul"
+
+// DefaultBeers is some data's samples
 var DefaultBeers = []adding.Beer{
 	{
 		Name:    "Pliny the Elder",

@@ -2,13 +2,13 @@ package rest
 
 import (
 	"encoding/json"
-	"fmt"
+	// "fmt"
 	"net/http"
-	"strconv"
+	// "strconv"
 
-	"github.com/julienschmidt/httprouter"
-	// "github.com/djedjethai/goDdd/pkg/adding"
+	"github.com/djedjethai/goDdd/pkg/adding"
 	"github.com/djedjethai/goDdd/pkg/listing"
+	"github.com/julienschmidt/httprouter"
 )
 
 func Handler(a adding.Service, l listing.Service) http.Handler {
@@ -16,6 +16,8 @@ func Handler(a adding.Service, l listing.Service) http.Handler {
 
 	router.GET("/beers", getBeers(l))
 	router.GET("/beers/:id", getBeer(l))
+
+	return router
 }
 
 func getBeers(s listing.Service) func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {

@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/djedjethai/goDdd/cmd/adding"
-	"github.com/djedjethai/goDdd/cmd/storage/json"
+	"github.com/djedjethai/goDdd/pkg/adding"
+	"github.com/djedjethai/goDdd/pkg/storage/json"
 )
 
 func main() {
@@ -17,6 +17,8 @@ func main() {
 	adder = adding.NewService(s)
 
 	// add the sample data
+	fmt.Printf("%v", DefaultBeers)
+	fmt.Printf("%v", Moncul)
 	adder.AddSampleBeers(DefaultBeers)
 
 	fmt.Println("Finished adding sample Beer datas")

@@ -12,7 +12,7 @@ var errDuplicate = errors.New("beer already exist")
 // Service provide beer adding operation
 type Service interface {
 	AddBeer(...Beer) error
-	AddSampleBeer([]Beer)
+	AddSampleBeers([]Beer)
 }
 
 // Repository provide access to beer repository
@@ -36,11 +36,13 @@ func NewService(r Repository) Service {
 func (s *service) AddBeer(b ...Beer) error {
 	// make sure we don't duplicate
 	existingBeers := s.r.GetAllBeers()
-	for _, bb := range existingBeers {
-		if bb.Abv == b.Abv &&
-			bb.Brewery == b.Brewery &&
-			bb.Name == b.Name {
-			return errDuplicate
+	for _, bb := range b {
+		for _, e := range existingBeers {
+			if bb.Abv == e.Abv &&
+				bb.Brewery == e.Brewery &&
+				bb.Name == e.Name {
+				return errDuplicate
+			}
 		}
 	}
 
@@ -54,10 +56,9 @@ func (s *service) AddBeer(b ...Beer) error {
 	return nil
 }
 
-func (s *service) AddSampleBeer(b []Beer) {
-
-	for _, bb = range b {
-		err = s.r.AddBeer(bb)
+func (s *service) AddSampleBeers(b []Beer) {
+	for _, bb := range b {
+		err := s.r.AddBeer(bb)
 		if err != nil {
 			fmt.Println("err when adding the sampleBeers to the repos")
 		}

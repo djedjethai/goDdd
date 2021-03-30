@@ -1,7 +1,7 @@
 package memory
 
 import (
-	"fmt"
+	// "fmt"
 	"github.com/djedjethai/goDdd/pkg/storage"
 	"log"
 	"time"
@@ -34,7 +34,7 @@ func (m *Storage) AddBeer(b adding.Beer) error {
 	return nil
 }
 
-func (m *storage) GetBeer(id string) (listing.Beer, error) {
+func (m *Storage) GetBeer(id string) (listing.Beer, error) {
 	var beer listing.Beer
 
 	for i := range m.beers {
@@ -44,7 +44,7 @@ func (m *storage) GetBeer(id string) (listing.Beer, error) {
 			beer.Brewery = m.beers[i].Brewery
 			beer.Abv = m.beers[i].Abv
 			beer.ShortDesc = m.beers[i].ShortDesc
-			beer.Create = time.Time
+			beer.Created = m.beers[i].Created
 
 			return beer, nil
 		}
@@ -53,7 +53,7 @@ func (m *storage) GetBeer(id string) (listing.Beer, error) {
 	return beer, listing.ErrNotFound
 }
 
-func (m *storage) GetAllBeers() []listing.Beer {
+func (m *Storage) GetAllBeers() []listing.Beer {
 	var beers []listing.Beer
 
 	for i := range m.beers {

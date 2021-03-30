@@ -8,6 +8,7 @@ import (
 	"github.com/djedjethai/goDdd/pkg/storage/json"
 	"github.com/djedjethai/goDdd/pkg/storage/memory"
 	"log"
+	"net/http"
 )
 
 type Type int
@@ -40,7 +41,7 @@ func main() {
 	}
 
 	// set up the http server
-	router := rest.handler(adder, lister)
+	router := rest.Handler(adder, lister)
 
 	fmt.Println("server listen on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", router))
